@@ -1059,3 +1059,82 @@ nav ul li a {
         background-color: rgba(0,0,0,0.1);
     }
 }
+
+/* ==========================================================================
+   MENÚ HAMBURGUESA (SENSE JAVASCRIPT)
+   ========================================================================== */
+
+/* 1. Amaguem el checkbox i l'icona per defecte (Ordinador) */
+.menu-checkbox {
+    display: none;
+}
+
+.hamburger {
+    display: none; /* No es veu en pantalles grans */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Dibuixem les tres ralles de l'hamburguesa */
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-blanc);
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* 2. AJUSTOS PER A MÒBIL (Punt de ruptura 768px o 600px) */
+@media (max-width: 768px) {
+    header {
+        position: relative;
+        flex-direction: row; /* Logo i Hamburguesa a la mateixa línia */
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: flex; /* Mostrem l'hamburguesa */
+    }
+
+    /* Amaguem el menú de navegació per defecte a mòbil */
+    .menu-nav {
+        display: none;
+        position: absolute;
+        top: 100%; /* Just sota la capçalera */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-primari);
+        z-index: 1000;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .menu-nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .menu-nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* EL TRUC: Si el checkbox està marcat, mostrem el menú */
+    .menu-checkbox:checked ~ .menu-nav {
+        display: block;
+    }
+
+    /* Opcional: Animació de l'hamburguesa (es creua en forma de X) */
+    .menu-checkbox:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-checkbox:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-checkbox:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
