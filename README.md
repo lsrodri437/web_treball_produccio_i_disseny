@@ -1,46 +1,35 @@
-Aquest projecte consisteix en la creació d'una plataforma web informativa completa dedicada a la **Festa Major del Vendrell 2025**. L'objectiu principal és oferir als ciutadans i visitants un espai centralitzat on consultar el programa d'actes, la història de la vila, les entitats participants i mapes interactius de la celebració.
+# Festa Major El Vendrell 2025
 
-## 🚀 Sobre el Projecte
+## Tema i motivació
+L'objectiu d'aquesta pàgina web és centralitzar tota la informació rellevant sobre la Festa Major del Vendrell 2025. La web està dirigida tant als veïns de la vila com als visitants que vulguin conèixer la programació, la història i les tradicions locals. La motivació principal és oferir una eina digital moderna i accessible que faciliti la participació ciutadana i la descoberta del ric patrimoni cultural i festiu del Vendrell, amb un especial èmfasi en el bestiari de foc i la cartografia dels esdeveniments.
 
-La web ha estat dissenyada seguint principis de **disseny responsive** i **bones pràctiques de desenvolupament**, assegurant una experiència d'usuari fluida tant en escriptoris com en dispositius mòbils. El lloc web consta de 7 pàgines amb layouts diferenciats i estructurats mitjançant un sistema de graella propi.
+## Dades
+Per a la realització d'aquest projecte s'han utilitzat les següents fonts i recursos:
+* **Continguts textuals:** Informació històrica i descriptiva sobre els actes i les entitats de foc del Vendrell.
+* **Multimèdia:** Imatges locals, fotografies de recurs de Unsplash, un vídeo promocional en format MP4 i la banda sonora original en MP3.
+* **Eines de desenvolupament:** HTML5 i CSS3 per a l'estructura i el disseny, sense dependència de frameworks externs.
+* **Recursos externs:** Integració de Google Calendar per a l'agenda d'actes i Google Forms per al formulari de voluntariat.
+* **Cartografia:** Dades geogràfiques processades i exportades amb QGIS.
 
-### Característiques Principals:
-- **Disseny Adaptatiu (Responsive):** 3 punts de ruptura (breakpoints) per a mòbils, tauletes i escriptoris.
-- **Efecte Parallax:** Presentació de la història amb fons fixos que es revelen en fer scroll.
-- **Galeria "Masonry" i Lightbox:** Collage d'imatges organitzat per dies (carpetes) amb ampliació de fotos sense necessitat de JavaScript.
-- **Mapes Interactius:** Visor cartogràfic professional que integra mapes elaborats amb **QGIS2Web**.
-- **Multimèdia:** Reproductor de la banda sonora oficial (MP3) i vídeo promocional de la festa.
-- **Integració d'Eines:** Google Calendar per al programa d'actes i Google Forms per al voluntariat.
+## Estructura de la web
+La web es divideix en set seccions principals:
+* **Inici (`index.html`):** Benvinguda visual amb una secció Hero, reproductor d'àudio de la banda sonora i vídeo promocional.
+* **Informació (`informacio.html`):** Recorregut per la història de la festa utilitzant un efecte visual de Parallax.
+* **Multimèdia (`multimedia.html`):** Galeria fotogràfica organitzada per carpetes (dies de la festa) amb un disseny de collage "Masonry" i visualització "Lightbox".
+* **Programa (`programa.html`):** Calendari interactiu dels esdeveniments i opció de descàrrega del programa oficial en PDF.
+* **Grups de Foc (`grups_de_foc.html`):** Fitxes informatives i visuals de les 10 bèsties de foc que formen el seguici.
+* **Contacte (`contacte.html`):** Secció amb dades de contacte oficials i formulari d'inscripció per a voluntaris.
+* **Mapes (`mapes.html`):** Visor cartogràfic amb selectors per consultar rutes i punts d'interès.
 
-## 🛠️ Tecnologies Utilitzades
+## Disseny web responsiu
+El disseny s'ha treballat mitjançant **CSS Grid** i **Flexbox** per garantir que la web sigui utilitzable en qualsevol dispositiu:
+* **Adaptabilitat:** S'han definit *media queries* per a mòbil, tauleta i escriptori.
+* **Menú Hamburguesa:** En dispositius mòbils, la navegació es comprimeix en un menú desplegable tipus "hamburguesa" per optimitzar l'espai.
+* **Interactivitat sense JS:** S'han implementat tècniques de CSS (com el *Checkbox hack* i la pseudo-classe *:target*) per a funcionalitats com el menú mòbil, el Lightbox i les carpetes de la galeria, millorant la velocitat de càrrega i l'accessibilitat.
+* **Imatges:** S'utilitza la propietat `object-fit: cover` i amplades percentuals per assegurar que les fotografies no es deformin i s'ajustin a les graelles.
 
-Per aquest projecte s'ha prioritzat el desenvolupament "vanilla" per demostrar el domini de les tecnologies base, **evitant l'ús de frameworks CSS** com Bootstrap o W3.CSS:
+## Cartografia
+Els mapes s'han integrat mitjançant l'eina **QGIS2Web**. S'ha realitzat una tasca prèvia de digitalització i simbolització de les rutes de la rua, els escenaris de concerts i els punts de serveis. Aquests mapes s'insereixen a la web a través de `iframes` dins d'un visor estilitzat que permet a l'usuari alternar entre diferents capes d'informació geogràfica de forma intuïtiva.
 
-- **HTML5:** Estructura semàntica del contingut.
-- **CSS3:** - **Grid View:** Layouts complexos i organitzats.
-  - **Flexbox:** Alineació d'elements i sistema de "Sticky Footer".
-  - **Media Queries:** Adaptabilitat total segons la mida de pantalla.
-  - **CSS Hacks (Checkbox/Target):** Per a funcionalitats interactives (tabs, lightbox, selector de mapes) sense JS.
-- **QGIS2Web:** Per a la generació de la cartografia interactiva.
-- **Markdown:** Per a la documentació del projecte.
-
-## 📂 Estructura del Projecte
-
-El repositori segueix una organització neta de fitxers:
-
-```text
-├── index.html           # Pàgina principal
-├── informacio.html      # Història amb efecte Parallax
-├── multimedia.html      # Galeria de fotos (Collage i Lightbox)
-├── programa.html        # Programa d'actes i descàrrega de PDF
-├── grups_de_foc.html    # Fitxes de les 10 bèsties de foc
-├── contacte.html        # Dades de contacte i formulari de voluntariat
-├── mapes.html           # Visor de mapa interactiu
-├── css/
-│   └── styles.css       # Full d'estils principal (únic i documentat)
-├── images/              # Carpeta d'imatges i iconografia
-├── documents/           # Programa oficial en PDF
-├── musica/              # Arxius MP3 de la banda sonora
-├── videos/              # Videos utilitzats en la pàgina web
-├── res/                 # Archius generats a partir de QGIS
-└── maps/                # Exportacions de QGIS2Web
+## Dificultats/millores
+Una de les principals dificultats ha estat la implementació de funcionalitats interactives (com els filtres de la galeria o el lightbox) sense recórrer a JavaScript, la qual cosa ha requerit una arquitectura CSS molt precisa. Com a millores futures, es podria plantejar la implementació d'una cerca interna o la traducció de la web a més idiomes per augmentar-ne l'abast turístic.
