@@ -1138,3 +1138,23 @@ nav ul li a {
         transform: translateY(-8px) rotate(-45deg);
     }
 }
+
+/* ==========================================================================
+   ICONA DE DESCÀRREGA AL TÍTOL
+   ========================================================================== */
+
+.download-icon-title {
+    text-decoration: none;
+    color: var(--color-primari); /* Utilitzem el vermell de la festa */
+    font-size: 1.1rem;
+    margin-left: 8px;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+}
+
+.download-icon-title:hover {
+    color: var(--color-secundari);
+    /* Efecte de "bot" cap avall per indicar descàrrega */
+    transform: translateY(3px); 
+}
