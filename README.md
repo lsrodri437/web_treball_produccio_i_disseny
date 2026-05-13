@@ -1,6 +1,3 @@
-# Contingut del fitxer Markdown
-readme_content = """# Festa Major El Vendrell 2025 🎡 salt de foc, música i tradició
-
 Aquest projecte consisteix en la creació d'una plataforma web informativa completa dedicada a la **Festa Major del Vendrell 2025**. L'objectiu principal és oferir als ciutadans i visitants un espai centralitzat on consultar el programa d'actes, la història de la vila, les entitats participants i mapes interactius de la celebració.
 
 ## 🚀 Sobre el Projecte
@@ -32,16 +29,18 @@ Per aquest projecte s'ha prioritzat el desenvolupament "vanilla" per demostrar e
 El repositori segueix una organització neta de fitxers:
 
 ```text
-├── index.html           # Pàgina principal (Hero, Vídeo, Àudio)
+├── index.html           # Pàgina principal
 ├── informacio.html      # Història amb efecte Parallax
 ├── multimedia.html      # Galeria de fotos (Collage i Lightbox)
 ├── programa.html        # Programa d'actes i descàrrega de PDF
 ├── grups_de_foc.html    # Fitxes de les 10 bèsties de foc
 ├── contacte.html        # Dades de contacte i formulari de voluntariat
-├── mapes.html           # Visor de mapes interactius
+├── mapes.html           # Visor de mapa interactiu
 ├── css/
 │   └── styles.css       # Full d'estils principal (únic i documentat)
 ├── images/              # Carpeta d'imatges i iconografia
 ├── documents/           # Programa oficial en PDF
 ├── musica/              # Arxius MP3 de la banda sonora
+├── videos/              # Videos utilitzats en la pàgina web
+├── res/                 # Archius generats a partir de QGIS
 └── maps/                # Exportacions de QGIS2Web
