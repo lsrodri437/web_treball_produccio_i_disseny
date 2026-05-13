@@ -6,14 +6,14 @@ L'objectiu d'aquesta pàgina web és centralitzar tota la informació rellevant 
 ## Dades
 Per a la realització d'aquest projecte s'han utilitzat les següents fonts i recursos:
 * **Continguts textuals:** Informació històrica i descriptiva sobre els actes i les entitats de foc del Vendrell.
-* **Multimèdia:** Imatges locals, fotografies de recurs de Unsplash, un vídeo promocional en format MP4 i la banda sonora original en MP3.
-* **Eines de desenvolupament:** HTML5 i CSS3 per a l'estructura i el disseny, sense dependència de frameworks externs.
+* **Multimèdia:** Fotografies, un vídeo promocional en format MP4, la banda sonora original en MP3...
+* **Eines de desenvolupament:** HTML5 i CSS3 per a l'estructura i el disseny.
 * **Recursos externs:** Integració de Google Calendar per a l'agenda d'actes i Google Forms per al formulari de voluntariat.
 * **Cartografia:** Dades geogràfiques processades i exportades amb QGIS.
 
 ## Estructura de la web
 La web es divideix en set seccions principals:
-* **Inici (`index.html`):** Benvinguda visual amb una secció Hero, reproductor d'àudio de la banda sonora i vídeo promocional.
+* **Inici (`index.html`):** Benvinguda visual amb una secció Hero, reproductor del videoclip de la banda sonora i vídeo promocional.
 * **Informació (`informacio.html`):** Recorregut per la història de la festa utilitzant un efecte visual de Parallax.
 * **Multimèdia (`multimedia.html`):** Galeria fotogràfica organitzada per carpetes (dies de la festa) amb un disseny de collage "Masonry" i visualització "Lightbox".
 * **Programa (`programa.html`):** Calendari interactiu dels esdeveniments i opció de descàrrega del programa oficial en PDF.
@@ -25,11 +25,10 @@ La web es divideix en set seccions principals:
 El disseny s'ha treballat mitjançant **CSS Grid** i **Flexbox** per garantir que la web sigui utilitzable en qualsevol dispositiu:
 * **Adaptabilitat:** S'han definit *media queries* per a mòbil, tauleta i escriptori.
 * **Menú Hamburguesa:** En dispositius mòbils, la navegació es comprimeix en un menú desplegable tipus "hamburguesa" per optimitzar l'espai.
-* **Interactivitat sense JS:** S'han implementat tècniques de CSS (com el *Checkbox hack* i la pseudo-classe *:target*) per a funcionalitats com el menú mòbil, el Lightbox i les carpetes de la galeria, millorant la velocitat de càrrega i l'accessibilitat.
 * **Imatges:** S'utilitza la propietat `object-fit: cover` i amplades percentuals per assegurar que les fotografies no es deformin i s'ajustin a les graelles.
 
 ## Cartografia
-Els mapes s'han integrat mitjançant l'eina **QGIS2Web**. S'ha realitzat una tasca prèvia de digitalització i simbolització de les rutes de la rua, els escenaris de concerts i els punts de serveis. Aquests mapes s'insereixen a la web a través de `iframes` dins d'un visor estilitzat que permet a l'usuari alternar entre diferents capes d'informació geogràfica de forma intuïtiva.
+Els mapes s'han integrat mitjançant l'eina **QGIS2Web**. S'ha realitzat una tasca prèvia de digitalització i simbolització de les rutes de la rua, els escenaris de concerts i els punts d'encesa del correfoc. Aquests mapes s'insereixen a la web a través de `iframes` dins d'un visor estilitzat que permet a l'usuari alternar entre diferents capes d'informació geogràfica de forma intuïtiva.
 
 ## Dificultats/millores
-Una de les principals dificultats ha estat la implementació de funcionalitats interactives (com els filtres de la galeria o el lightbox) sense recórrer a JavaScript, la qual cosa ha requerit una arquitectura CSS molt precisa. Com a millores futures, es podria plantejar la implementació d'una cerca interna o la traducció de la web a més idiomes per augmentar-ne l'abast turístic.
+Una de les principals dificultats ha estat la implementació de funcionalitats interactives (com els filtres de la galeria o el lightbox) sense recórrer a JavaScript, la qual cosa ha requerit una arquitectura CSS molt "complexa", que ha sigut possible gràcies al suport de Gemini. Com a millores futures, moltes, principalment corregir el problema de la galeria d'imatges, la qual no troba centrada les seves tres columnes; a més la d'afegir una targeta per a cada bèstia de foc en fer clic en el seu quadrat, la qual mostraria més informació d'aquesta...
