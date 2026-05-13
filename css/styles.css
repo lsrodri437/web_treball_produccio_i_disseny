@@ -1,0 +1,979 @@
+/* ==========================================================================
+   FITXER D'ESTILS PRINCIPAL (styles.css)
+   Aquest fitxer conté tot el disseny de la pàgina web de la Festa Major.
+   S'ha dividit en variables, estils generals, elements comuns (capçalera/peu)
+   i els layouts específics (Grid-View) de cada pàgina.
+   ========================================================================== */
+
+/* 1. VARIABLES GLOBALS */
+/* Ens permeten definir colors i mides un cop i reutilitzar-los. Així és més fàcil fer canvis de disseny globals. */
+:root {
+    --color-fons: #f4f4f9; /* Color gris clar per al fons general */
+    --color-text: #333333; /* Color fosc per al text per a una bona lectura */
+    --color-primari: #d32f2f; /* Vermell festiu per destacar elements (capçalera, botons) */
+    --color-secundari: #ff6659; /* Vermell més clar per efectes hover (quan el ratolí passa per sobre) */
+    --color-blanc: #ffffff;
+    --font-principal: 'Arial', sans-serif; /* Tipografia principal llegible */
+}
+
+/* 2. RESET I ESTILS BASE */
+/* Resetejem els marges per defecte dels navegadors perquè el nostre disseny sigui igual a tot arreu */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Assegura que el padding no augmenti l'amplada total de l'element */
+}
+
+body {
+    font-family: var(--font-principal);
+    background-color: var(--color-fons);
+    color: var(--color-text);
+    line-height: 1.6; /* Interlineat per facilitar la lectura */
+}
+
+/* 3. ELEMENTS COMUNS: CAPÇALERA (HEADER) I NAVEGACIÓ */
+header {
+    background-color: var(--color-primari);
+    color: var(--color-blanc);
+    padding: 1rem 5%; /* Espai interior dalt/baix i als costats */
+    display: flex; /* Utilitzem Flexbox per alinear el logo i el menú horizontalment */
+    justify-content: space-between; /* Separem el logo (esquerra) del menú (dreta) */
+    align-items: center; /* Centrem verticalment els elements */
+}
+
+header h1 a {
+    color: var(--color-blanc);
+    text-decoration: none; /* Traiem el subratllat del logo-enllaç */
+}
+
+nav ul {
+    list-style: none; /* Traiem els punts de la llista del menú */
+    display: flex; /* Posem els elements del menú en línia horitzontal */
+    gap: 15px; /* Espai entre els diferents enllaços del menú */
+}
+
+nav ul li a {
+    color: var(--color-blanc);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: background 0.3s; /* Animació suau en canviar el color de fons */
+}
+
+nav ul li a:hover {
+    background-color: var(--color-secundari); /* Canvi de color en passar el ratolí */
+    border-radius: 5px; /* Vores arrodonides per a l'efecte hover */
+}
+
+/* 3.1. MENÚ DESPLEGABLE (DROPDOWN) PER "ENTITATS" */
+.dropdown {
+    position: relative; /* Necessari per posicionar el submenú en relació a aquest element pare */
+}
+
+.dropdown-text {
+    cursor: pointer; /* Canvia el cursor a la "maneta" per indicar que es pot interactuar */
+    font-weight: bold;
+    padding: 10px;
+}
+
+.dropdown-content {
+    display: none; /* Ocultem el submenú per defecte */
+    position: absolute; /* El traiem del flux normal perquè floti per sota de l'element pare */
+    top: 100%; /* El col·loquem just sota del text de la capçalera */
+    left: 0;
+    background-color: var(--color-blanc);
+    min-width: 180px; /* Amplada mínima del submenú */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Ombra per donar profunditat */
+    flex-direction: column; /* Posem els subapartats en columna vertical */
+    z-index: 100; /* Ens assegurem que el submenú es mostri per sobre de la resta del contingut */
+}
+
+/* Quan passem el cursor sobre l'element '.dropdown', canviem el display del submenú a flex per mostrar-lo */
+.dropdown:hover .dropdown-content {
+    display: flex; 
+}
+
+.dropdown-content li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Línia separadora entre subapartats */
+}
+
+.dropdown-content li a {
+    color: var(--color-text); /* El text dels subapartats serà fosc */
+}
+
+.dropdown-content li a:hover {
+    background-color: var(--color-fons);
+    color: var(--color-primari);
+}
+
+.disabled-link {
+    color: gray; /* Els apartats on no es pot clicar (Seguici, Música) seran grisos */
+    cursor: not-allowed; /* Símbol de prohibit per indicar que no és un enllaç actiu */
+}
+
+/* 4. ELEMENTS COMUNS: PEU DE PÀGINA (FOOTER) */
+footer {
+    background-color: var(--color-text);
+    color: var(--color-blanc);
+    text-align: center; /* Centrem el contingut del footer */
+    padding: 20px;
+    margin-top: 40px; /* Espai per separar el footer del contingut de dalt */
+}
+
+.footer-links a, .back-to-top {
+    color: var(--color-secundari);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* 5. DISSENY RESPONSIVE (MEDIA QUERIES) I GRID-VIEWS ESPECÍFICS PER A CADA PÀGINA */
+
+/* Contenidor global per donar marges a tot el contingut de les pàgines */
+.container {
+    padding: 20px 5%;
+}
+
+/* Totes les graelles comencen dissenyades per a MÒBIL (1 columna) */
+.grid-home, .grid-info, .grid-media, .grid-foc, .grid-mapes {
+    display: grid; /* Activem el sistema Grid */
+    grid-template-columns: 1fr; /* A mòbil, tot ocupa 1 sola columna que agafa tot l'espai (1 franja) */
+    gap: 20px; /* Espai entre files/columnes */
+    margin-top: 20px;
+}
+
+/* Estructura específica d'iframes per centrar-los */
+.iframe-container {
+    display: flex;
+    justify-content: center; /* Centra horitzontalment */
+    margin-top: 20px;
+    width: 100%;
+}
+
+iframe {
+    max-width: 100%; /* Assegura que iframes no sobresurtin de la pantalla a mòbil */
+    border: none; /* Elimina la vora per defecte */
+}
+
+/* Components individuals dins les graelles */
+.card {
+    background-color: var(--color-blanc);
+    padding: 20px;
+    border-radius: 8px; /* Cantons arrodonits */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.card img {
+    width: 100%; /* Les imatges ocupen tot l'ample de la seva caixa */
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* PUNT DE RUPTURA 1: TAULETES (Mínim 768px) */
+/* Quan la pantalla és igual o més gran de 768px, apliquem aquestes regles */
+@media (min-width: 768px) {
+    
+    /* Pàgina Informació: Passem a 2 columnes (una petita d'1fr i una gran de 2fr) */
+    .grid-info {
+        grid-template-columns: 1fr 2fr; 
+    }
+
+    /* Pàgina Multimèdia: Passem a 2 columnes per encabir millor les fotos */
+    .grid-media {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* El menú de navegació de la capçalera segueix bé per tauletes, no cal modificar-lo gaire, però podríem ajustar espais */
+}
+
+/* PUNT DE RUPTURA 2: ESCRIPTORI (Mínim 1024px) */
+/* Quan la pantalla és igual o més gran de 1024px, aprofitem l'espai complet */
+@media (min-width: 1024px) {
+    
+    /* Pàgina Home: Presentació gran dalt i 3 seccions a baix */
+    .grid-home {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnes idèntiques */
+    }
+
+    /* Pàgina Multimèdia: Graella completa de 4 columnes d'imatges */
+    .grid-media {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Pàgina Entitats (Grups de Foc): 3 columnes per a les 3 entitats */
+    .grid-foc {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Pàgina Mapes: Layout amb barra lateral (sidebar). Una secció principal gran (3 parts) i una barra lateral (1 part) */
+    .grid-mapes {
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+/* Comportament del menú en dispositius molt petits (mòbils inferiors a 600px) */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column; /* Apilem el logo i el menú verticalment en mòbils */
+        text-align: center;
+    }
+    nav ul {
+        flex-direction: column; /* El menú es torna vertical */
+        width: 100%;
+        margin-top: 15px;
+    }
+    .dropdown-content {
+        position: static; /* El submenú empeny el contingut cap a baix, no flota per sobre */
+        box-shadow: none; /* Traiem l'ombra per netejar el disseny */
+    }
+}
+
+/* ==========================================================================
+   AJUSTOS PER AL PEU DE PÀGINA FIX A BAIX I VÍDEO
+   ========================================================================== */
+
+/* Modifiquem el body per utilitzar Flexbox vertical */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* El cos ocuparà com a mínim tota l'alçada de la finestra */
+    margin: 0;
+}
+
+/* El main s'estendrà per ocupar tot l'espai disponible */
+main {
+    flex: 1; 
+}
+
+/* Estils per al contenidor del vídeo */
+.video-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 5%;
+    text-align: center;
+}
+
+.video-container video, 
+.video-container iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Manté la proporció panoràmica */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ==========================================================================
+   MODIFICACIONS PER A LES TARGETES DE L'INICI
+   ========================================================================== */
+
+/* 1. Centrar el text només a les targetes de la pàgina principal */
+.grid-home .card {
+    text-align: center;
+}
+
+/* 2. Donar un format específic a les icones superiors perquè no ocupin el 100% de l'amplada */
+.card img.icona-targeta {
+    width: 60px; /* Pots fer aquest número més gran o més petit segons la mida que vulguis */
+    height: auto;
+    margin: 0 auto 15px auto; /* Aquest marge (auto als costats) és el que centra la imatge */
+    display: block; /* Obligatori perquè el marge automàtic funcioni en una imatge */
+    border-radius: 0; /* Traiem els cantons arrodonits per defecte si la icona ja té el seu propi format */
+}
+
+/* ==========================================================================
+   ESTILS PER A LA PÀGINA D'INFORMACIÓ (EFECTE PARALLAX)
+   ========================================================================== */
+
+/* Estils per als blocs de text */
+.seccio-text {
+    padding: 60px 5%; /* Molt espai a dalt i a baix perquè respiri */
+    background-color: var(--color-fons);
+    text-align: center;
+    max-width: 1200px; /* Limitem l'amplada perquè el text no es faci pesat de llegir */
+    margin: 0 auto; /* Centrem el bloc de text al mig de la pantalla */
+}
+
+.seccio-text h2, .seccio-text h3 {
+    margin-bottom: 20px;
+    color: var(--color-primari);
+}
+
+.seccio-text p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* La classe "màgica" per a l'efecte de la imatge que es queda fixa */
+.seccio-parallax {
+    /* El truc: la imatge de fons no es mou en fer scroll */
+    background-attachment: fixed;
+    /* Centrem la imatge */
+    background-position: center;
+    /* Evitem que es repeteixi com un mosaic */
+    background-repeat: no-repeat;
+    /* Fem que la imatge cobreixi sempre tot l'espai sense deformar-se */
+    background-size: cover;
+    /* Alçada mínima perquè es vegi un bon tros d'imatge */
+    min-height: 400px; 
+}
+
+/* Assignem imatges diferents a cada secció. 
+   IMPORTANT: Canvia la URL per la ruta real de les teves fotos */
+.fons-historia-1 {
+    /* Exemple amb una foto temporal */
+    background-image: url('../images/fons_ball.png'); 
+}
+
+.fons-historia-2 {
+    /* Exemple amb una foto temporal */
+    background-image: url('../images/fons_castells.png'); 
+}
+
+.fons-historia-3 {
+    /* Exemple amb una foto temporal */
+    background-image: url('../images/fons_diables.png'); 
+}
+
+/* ==========================================================================
+   ESTILS PER A LA GALERIA COLLAGE (MASONRY)
+   ========================================================================== */
+
+/* Contenidor principal del collage */
+.collage-galeria {
+    /* Usem columnes per crear l'efecte collage fàcilment */
+    column-count: 1; /* En mòbil, posem només 1 columna */
+    column-gap: 15px; /* Espai horitzontal entre les columnes */
+    margin-top: 30px;
+}
+
+/* Cada targeta d'imatge */
+.collage-item {
+    /* MOLT IMPORTANT: Evita que una imatge es talli per la meitat entre dues columnes */
+    break-inside: avoid; 
+    margin-bottom: 15px; /* Espai vertical entre les imatges de la mateixa columna */
+    border-radius: 8px; /* Cantons arrodonits per fer-ho elegant */
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Una ombra suau per donar profunditat */
+    
+    /* Afegim un petit efecte d'animació per fer-ho més modern */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecte en passar el ratolí per sobre la foto */
+.collage-item:hover {
+    transform: scale(1.03); /* La imatge es fa una miqueta més gran */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3); /* L'ombra es fa més gran per donar sensació de flotar */
+    cursor: pointer;
+}
+
+/* Assegurem que la imatge encaixa perfectament a la seva targeta */
+.collage-item img {
+    width: 100%;
+    height: auto;
+    display: block; /* Elimina un petit marge inferior que posen els navegadors per defecte */
+}
+
+/* Punts de ruptura (Responsive) per afegir columnes a pantalles més grans */
+
+@media (min-width: 600px) {
+    .collage-galeria {
+        column-count: 2; /* 2 columnes a tauletes */
+    }
+}
+
+@media (min-width: 1024px) {
+    .collage-galeria {
+        column-count: 3; /* 3 columnes en ordinadors d'escriptori */
+    }
+}
+
+@media (min-width: 1400px) {
+    .collage-galeria {
+        column-count: 4; /* 4 columnes en pantalles panoràmiques molt grans */
+    }
+}
+
+/* ==========================================================================
+   EFECTE LIGHTBOX (AMPLIAR IMATGES SENSE JAVASCRIPT)
+   ========================================================================== */
+
+/* L'enllaç fosc que ocupa tota la pantalla, ocult per defecte */
+.lightbox {
+    display: none; /* Amagat per defecte */
+    position: fixed; /* Es queda fix a la pantalla encara que facis scroll */
+    z-index: 1000; /* Ens assegurem que quedi per sobre de la capçalera i la resta */
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fons negre semitransparent */
+}
+
+/* EL TRUC MÀGIC: Quan l'ID de l'element coincideix amb la URL (ex: #img1), es mostra */
+.lightbox:target {
+    display: flex; /* Activem flexbox per centrar-ho fàcilment */
+    justify-content: center; /* Centrem horitzontalment */
+    align-items: center; /* Centrem verticalment */
+}
+
+/* La imatge ampliada a dins del lightbox */
+.lightbox img {
+    max-width: 90%; /* Que no toqui les vores laterals de la pantalla */
+    max-height: 90vh; /* Que no toqui dalt ni baix (vh = viewport height) */
+    box-shadow: 0 0 25px rgba(0,0,0,0.8); /* Ombra pronunciada */
+    border-radius: 5px;
+    border: 3px solid white; /* Un marc blanc prim com les fotos antigues */
+    cursor: zoom-out; /* Canvia el cursor a una lupa amb un signe menys per indicar que es tancarà */
+}
+
+/* Evitem que l'enllaç de la foto petita mostri el subratllat blau per defecte */
+.collage-item a {
+    display: block;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   SISTEMA DE CARPETES (CSS TABS HACK)
+   ========================================================================== */
+
+/* 1. Amaguem els controls rodons per defecte de l'HTML */
+input[name="dia-festa"] {
+    display: none;
+}
+
+/* 2. Graella per a les carpetes */
+.carpetes-container {
+    display: grid;
+    /* Això fa que les carpetes s'adaptin a la pantalla de 1 a 4 columnes automàticament */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+/* 3. Disseny individual de cada carpeta */
+.carpeta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Filtre fosc sobre la imatge de la carpeta perquè el títol es llegeixi bé */
+.carpeta::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Canvia el 0.5 a més alt per fer-ho més fosc */
+    transition: background-color 0.3s;
+}
+
+.carpeta h3 {
+    position: relative; /* Posem el text per sobre del filtre fosc */
+    z-index: 1;
+    text-shadow: 1px 1px 3px black;
+    pointer-events: none; /* Evita errors al clicar el text en lloc de la carpeta */
+}
+
+/* Efecte en passar el ratolí */
+.carpeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+.carpeta:hover::before {
+    background-color: rgba(0, 0, 0, 0.3); /* S'aclareix una mica en fer hover */
+}
+
+/* 4. Assignar la imatge de fons de cada carpeta (canvia les rutes per les teves fotos) */
+.fons-jaume  { background-image: url('../images/jaume/jaume_1.jpg'); }
+.fons-anna   { background-image: url('../images/anna/anna_1.jpg'); }
+.fons-anneta { background-image: url('../images/anneta/anneta_1.jpg'); }
+.fons-gos    { background-image: url('../images/gos/gos_1.jpg'); }
+
+/* 5. LÒGICA VISUAL: Com reacciona la carpeta seleccionada */
+#tab-jaume:checked ~ .carpetes-container .fons-jaume,
+#tab-anna:checked ~ .carpetes-container .fons-anna,
+#tab-anneta:checked ~ .carpetes-container .fons-anneta,
+#tab-gos:checked ~ .carpetes-container .fons-gos {
+    border: 4px solid var(--color-primari); /* Marc vermell indicant que està oberta */
+    transform: scale(1.03); /* Es fa una mica més gran */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   LÒGICA DE LES GALERIES
+   ========================================================================== */
+
+/* Amaguem totes les galeries per defecte */
+.galeria-content {
+    display: none; 
+    /* Petita animació d'aparició (fade-in) */
+    animation: fadeIn 0.5s ease-in-out; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* LÒGICA FUNCIONAL: Quan un botó està marcat, mostrem el seu contingut */
+#tab-jaume:checked ~ .galeries-wrapper #content-jaume,
+#tab-anna:checked ~ .galeries-wrapper #content-anna,
+#tab-anneta:checked ~ .galeries-wrapper #content-anneta,
+#tab-gos:checked ~ .galeries-wrapper #content-gos {
+    display: block; 
+}
+
+/* ==========================================================================
+   ESTILS PÀGINA PROGRAMA (ESTÈTICA PROFESSIONAL)
+   ========================================================================== */
+
+.programa-intro {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.programa-intro h2 {
+    font-size: 2.5rem;
+    color: var(--color-primari);
+    margin-bottom: 10px;
+}
+
+/* Disseny de la targeta de descàrrega */
+.download-section {
+    margin-bottom: 60px;
+}
+
+.download-card {
+    background-color: white;
+    border-left: 6px solid var(--color-primari);
+    padding: 35px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+}
+
+.download-text h3 {
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.download-text p {
+    color: #666;
+    max-width: 500px;
+}
+
+/* Botó de descàrrega professional */
+.btn-download {
+    background-color: var(--color-primari);
+    color: white !important;
+    padding: 18px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+}
+
+.btn-download:hover {
+    background-color: var(--color-secundari);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+}
+
+.btn-download .icon {
+    font-size: 1.4rem;
+}
+
+/* Títol de secció amb subratllat estilitzat */
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.underline {
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-primari);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.calendar-wrapper {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* Adaptabilitat per a mòbils */
+@media (max-width: 768px) {
+    .download-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        padding: 30px 20px;
+    }
+    
+    .programa-intro h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ==========================================================================
+   ESTILS GRUPS DE FOC (10 BÈSTIES)
+   ========================================================================== */
+
+.foc-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.foc-header h2 {
+    font-size: 2.2rem;
+    color: var(--color-primari);
+}
+
+/* Graella adaptativa professional */
+.grid-foc-professional {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Disseny de la targeta de la bèstia */
+.card-bestia {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+}
+
+.card-bestia:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(211, 47, 47, 0.15);
+    border-color: var(--color-primari);
+}
+
+/* Contenidor de la imatge amb zoom */
+.card-img {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Això fa que totes les fotos encaixin perfectament sense deformar-se */
+    transition: transform 0.5s ease;
+}
+
+.card-bestia:hover .card-img img {
+    transform: scale(1.1);
+}
+
+/* Cos de la targeta */
+.card-body {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-body h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    color: var(--color-text);
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.card-body h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-primari);
+}
+
+.card-body p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Ajustos per a mòbils */
+@media (max-width: 600px) {
+    .grid-foc-professional {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+}
+
+/* ==========================================================================
+   ESTILS PÀGINA D'INICI PROFESSIONAL
+   ========================================================================== */
+
+/* 1. SECCIÓ HERO (Capçalera impactant) */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('../images/fons-hero.jpg') no-repeat center center/cover;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.hero-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
+
+.btn-hero {
+    background-color: var(--color-primari);
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-hero:hover {
+    background-color: var(--color-secundari);
+}
+
+/* 2. LAYOUT MULTIMÈDIA (Àudio i Vídeo de costat) */
+.multimedia-home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.audio-player-card, .video-home-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.audio-player-card h3, .video-home-card h3 {
+    margin-bottom: 15px;
+    color: var(--color-primari);
+}
+
+/* Estil del reproductor d'àudio */
+audio {
+    width: 100%;
+    margin-top: 15px;
+    filter: sepia(20%) saturate(70%) grayscale(100%) contrast(99%) invert(12%); /* Opcional: per donar-li un to més fosc i elegant */
+}
+
+.video-container-mini video {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Ajustos per a mòbils */
+@media (max-width: 850px) {
+    .multimedia-home {
+        grid-template-columns: 1fr;
+    }
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ==========================================================================
+   PORTADA DE L'ÀUDIO I FONS HERO
+   ========================================================================== */
+
+/* 1. Estils per a la portada de la cançó */
+.audio-cover-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.audio-cover {
+    max-width: 200px; /* Mida recomanada per a la portada */
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.audio-cover:hover {
+    transform: scale(1.05); /* Petit efecte de zoom en passar el ratolí */
+}
+
+/* 2. Secció Hero (el títol amb imatge de fons) */
+/* He actualitzat aquesta part perquè puguis posar la teva imatge fàcilment */
+.hero {
+    /* El gradient rgba(0,0,0,0.5) serveix per enfosquir la foto i que el text blanc es llegeixi millor */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('../images/cos_caramot.jpg') no-repeat center center/cover;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   ESTILS PÀGINA CONTACTE (PROFESSIONAL)
+   ========================================================================== */
+
+.contacte-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contacte-header h2 {
+    font-size: 2.2rem;
+    color: var(--color-primari);
+}
+
+/* Graella de dues columnes per a contacte */
+.grid-contacte-professional {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* La columna del formulari és una mica més ampla */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Targetes de contingut */
+.info-card, .form-card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.info-card h3, .form-card h3 {
+    color: var(--color-primari);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f4f4f9;
+    padding-bottom: 10px;
+}
+
+/* Llista de dades de contacte */
+.llista-contacte {
+    list-style: none;
+    padding: 0;
+}
+
+.llista-contacte li {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.llista-contacte .icon {
+    font-size: 1.5rem;
+    background: #fdf2f2;
+    padding: 10px;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+.llista-contacte a {
+    color: var(--color-primari);
+    text-decoration: none;
+}
+
+/* Secció xarxes socials dins la targeta */
+.social-contacte {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.social-icons-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.social-icons-box a {
+    background: var(--color-text);
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: background 0.3s;
+}
+
+.social-icons-box a:hover {
+    background: var(--color-primari);
+}
+
+/* Iframe del formulari adaptat */
+.iframe-container-contacte {
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+/* Responsivitat per a tauletes i mòbils */
+@media (max-width: 900px) {
+    .grid-contacte-professional {
+        grid-template-columns: 1fr; /* Una sola columna en pantalles petites */
+    }
+    
+    .info-card {
+        order: 2; /* Posem les dades a sota del formulari en mòbil */
+    }
+}
