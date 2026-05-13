@@ -977,3 +977,85 @@ audio {
         order: 2; /* Posem les dades a sota del formulari en mòbil */
     }
 }
+
+/* ==========================================================================
+   CAPÇALERA RESPONSIVE I CENTRADA
+   ========================================================================== */
+
+header {
+    background-color: var(--color-primari);
+    color: var(--color-blanc);
+    padding: 1.5rem 5%;
+    display: flex;
+    flex-direction: column; /* Per defecte els apilem per centrar-ho tot */
+    align-items: center;    /* Centratge horitzontal de logo i nav */
+    gap: 20px;              /* Espai entre logo i menú */
+}
+
+/* En pantalles grans (ordinador), tornem a la disposició horitzontal */
+@media (min-width: 1024px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+header h1 a {
+    color: var(--color-blanc);
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+
+/* Navegació */
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;       /* Permet que els elements saltin de línia si no caben */
+    justify-content: center; /* Centra els elements del menú */
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+}
+
+nav ul li {
+    text-align: center;    /* Centra el text dins de cada element */
+}
+
+nav ul li a {
+    color: var(--color-blanc);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    display: block;        /* Perquè el padding funcioni bé i el centratge sigui real */
+    transition: background 0.3s;
+}
+
+/* AJUST PER A MÒBILS (Compressió total) */
+@media (max-width: 600px) {
+    header {
+        padding: 1rem 2%;
+    }
+    
+    nav ul {
+        flex-direction: column; /* Comprimim el menú en una columna */
+        width: 100%;
+        gap: 5px;
+    }
+
+    nav ul li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* Línia subtil de separació */
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content {
+        position: static;   /* El submenú apareix dins del flux, comprimit */
+        width: 100%;
+        box-shadow: none;
+        background-color: rgba(0,0,0,0.1);
+    }
+}
