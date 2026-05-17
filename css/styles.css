@@ -287,7 +287,7 @@ main {
 .seccio-text {
     padding: 60px 5%; /* Molt espai a dalt i a baix perquè respiri */
     background-color: var(--color-fons);
-    text-align: center;
+    text-align: justify;
     max-width: 1200px; /* Limitem l'amplada perquè el text no es faci pesat de llegir */
     margin: 0 auto; /* Centrem el bloc de text al mig de la pantalla */
 }
