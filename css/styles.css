@@ -1215,10 +1215,10 @@ input[name="dia-festa"]:checked + .carpetes-container .carpeta,
 }
 
 /* Fons de cada carpeta */
-.fons-jaume { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/jaume/jaume_2.jpg'); }
-.fons-anna { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/anna/anna_2.jpg'); }
-.fons-anneta { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/anneta/anneta_2.jpg'); }
-.fons-gos { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/gos/gos_2.jpg'); }
+.fons-jaume { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/jaume/jaume_1.jpg'); }
+.fons-anna { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/anna/anna_1.jpg'); }
+.fons-anneta { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/anneta/anneta_1.jpg'); }
+.fons-gos { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/gos/gos_1.jpg'); }
 
 /* Wrapper de les galeries */
 .galeries-wrapper {
