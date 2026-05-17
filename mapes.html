@@ -4,39 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapes - Festa Major El Vendrell</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header>
-    <h1><a href="index.html">Festa Major El Vendrell 2025</a></h1>
-    
-    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-    
-    <label for="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
+    <header class="d-flex align-items-center justify-content-between position-relative">
+        <h1><a href="index.html" class="text-decoration-none">Festa Major El Vendrell 2025</a></h1>
+        
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
 
-    <nav class="menu-nav">
-        <ul>
-            <li><a href="index.html">Inici</a></li>
-            <li><a href="informacio.html">Informació</a></li>
-            <li><a href="multimedia.html">Multimèdia</a></li>
-            <li><a href="programa.html">Programa</a></li>
-            <li class="dropdown">
-                <span class="dropdown-text">Entitats ▾</span>
-                <ul class="dropdown-content">
-                    <li><a href="grups_de_foc.html">Grups de foc</a></li>
-                    <li><span class="disabled-link">Seguici popular</span></li>
-                    <li><span class="disabled-link">Música</span></li>
-                </ul>
-            </li>
-            <li><a href="contacte.html">Contacte</a></li>
-            <li><a href="mapes.html">Mapes</a></li>
-        </ul>
-    </nav>
-</header>
+        <nav class="menu-nav">
+            <ul class="d-flex list-unstyled m-0 p-0">
+                <li><a href="index.html">Inici</a></li>
+                <li><a href="informacio.html">Informació</a></li>
+                <li><a href="multimedia.html">Multimèdia</a></li>
+                <li><a href="programa.html">Programa</a></li>
+                <li class="dropdown">
+                    <span class="dropdown-text">Entitats ▾</span>
+                    <ul class="dropdown-content list-unstyled m-0 p-0">
+                        <li><a href="grups_de_foc.html">Grups de foc</a></li>
+                        <li><span class="disabled-link">Seguici popular</span></li>
+                        <li><span class="disabled-link">Música</span></li>
+                    </ul>
+                </li>
+                <li><a href="contacte.html">Contacte</a></li>
+                <li><a href="mapes.html">Mapes</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main class="container">
         <h2>Recorreguts i Punts d'Interès</h2>
@@ -62,14 +63,14 @@
 
         </div>
     </main>
-
-    <footer id="footer">
-        <p>Visita les nostres xarxes socials:</p>
-        <div class="footer-links">
-            <a href="https://www.elvendrellturisme.com/">Turisme</a> | <a href="https://www.elvendrell.net/">Ajuntament</a> | <a href="https://www.instagram.com/fmelvendrell/">Instagram</a>
+    <footer id="footer" class="text-center py-4 mt-5">
+        <p class="mb-2">Visita les nostres xarxes socials:</p>
+        <div class="footer-links mb-3">
+            <a href="https://www.elvendrellturisme.com/" class="text-decoration-none">Turisme</a> | 
+            <a href="https://www.elvendrell.net/" class="text-decoration-none">Ajuntament</a> | 
+            <a href="https://www.instagram.com/fmelvendrell/" class="text-decoration-none">Instagram</a>
         </div>
-        <br>
-        <a href="#" class="back-to-top">⬆ Tornar a dalt</a>
+        <a href="#" class="back-to-top text-decoration-none">Tornar a dalt ▲</a>
     </footer>
 
     </body>
